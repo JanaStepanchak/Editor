@@ -111,12 +111,32 @@ document.querySelectorAll('.fonBox')[z].onclick=function(){
 			getE('box').style.backgroundRepeat="no-repeat";	getE('box').style.backgroundPosition="center";}}
 
 
-getE("fileZ").onchange = function(){
-	   	files = this.files;
-	for(var a=0;a<files.length;a++)
-	alert(files[a].name);
-	alert(this.value);
-	document.getElementsByTagName("body")[0].style.background="url("+this.value+")" }
+//getE("fileZ").onchange = function(){
+//	   	files = this.files;
+//	for(var a=0;a<files.length;a++)
+//	alert(files[a].name);
+//	alert(this.value);
+//	document.getElementsByTagName("body")[0].style.background="url("+this.value+")" }
+
+
+
+
+getE("fileZ").onchange = function() {
+  var preview = getE('box');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.addEventListener("load", function () {
+    preview.style.background = "url("+reader.result+")";
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+
+
+
 
 //*************************************************
 
@@ -401,6 +421,14 @@ function fNumber5(){
 
 
 
+
+
+
+ 
+
+
+
+       
 
 
 
